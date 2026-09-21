@@ -50,7 +50,7 @@ User inputs 3 to exit the program
 
 ## Current Limitations
 
--The program does not allow for any sorting or level of importance for the tasks. 
+-The program does not allow for any sorting or level of importance for the tasks. Also no ability to clear a task.
 
 ## Version Control
 
