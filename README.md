@@ -51,3 +51,8 @@ User inputs 3 to exit the program
 ## Current Limitations
 
 -The program does not allow for any sorting or level of importance for the tasks. 
+
+## Version Control
+
+this uses git where it stores changes locally and then uses github to upload them to the cloud
+
