@@ -11,7 +11,8 @@ def display_menu():
     print("\nTaskTrack Menu")
     print("1. View tasks")
     print("2. Add task")
-    print("3. Exit")
+    print("3. Remove task")
+    print("4. Exit")
 
 
 def add_task(tasks):
@@ -71,6 +72,41 @@ def save_tasks(tasks, filename):
             #TODO: Write each task followed by a newline character.
             file.write(f"{task}\n")
 
+
+def remove_task(tasks):
+    """Prompt the user to select and remove a task.
+
+    Return True when a task is removed and False otherwise.
+    """
+    if not tasks:
+        print("No tasks are available to remove.")
+        return False
+
+    view_tasks(tasks)
+    selection = input("Enter the number of the task to remove: ").strip()
+
+    #TODO: Reject input that is not numeric.
+    if not selection.isdigit():
+        print("Invalid input. Please enter a numeric value.")
+        return False
+
+    task_number = int(selection)
+
+    #TODO: Reject numbers outside the valid task range.
+    if task_number < 1 or task_number > len(tasks):
+        print("Invalid task number.")
+        return False
+
+    #TODO: Remove the selected task from the list.
+    # Remember that displayed task numbers begin at 1,
+    # while Python list indexes begin at 0.
+    removed_task = tasks.pop(task_number - 1) 
+
+    #TODO: Display a confirmation containing the removed task.
+    print(f"Task removed: {removed_task}")
+
+    return True
+
 def main():
     """Run the TaskTrack menu until the user chooses to exit."""
     tasks = load_tasks(TASKS_FILE)
@@ -85,6 +121,9 @@ def main():
             add_task(tasks)
             save_tasks(tasks, TASKS_FILE)
         elif choice == "3":
+            remove_task(tasks)
+            save_tasks(tasks, TASKS_FILE)
+        elif choice == "4":
             print("Goodbye!")
             break
         else:
